@@ -122,7 +122,7 @@ install_docker() {
 }
 
 install_marzban_script() {
-    FETCH_REPO="Gozargah/Marzban-scripts"
+    FETCH_REPO="amirpronk3/Marzban-scripts"
     SCRIPT_URL="https://github.com/$FETCH_REPO/raw/master/marzban.sh"
     colorized_echo blue "Installing marzban script"
     curl -sSL $SCRIPT_URL | install -m 755 /dev/stdin /usr/local/bin/marzban
@@ -142,9 +142,9 @@ install_marzban() {
     docker_file_path="$APP_DIR/docker-compose.yml"
     # install requested version
     if [ "$marzban_version" == "latest" ]; then
-        sed -i "s|image: gozargah/marzban:.*|image: gozargah/marzban:latest|g" "$docker_file_path"
+        sed -i "s|image: amirpronk3/marzban:.*|image: amirpronk3/marzban:latest|g" "$docker_file_path"
     else
-        sed -i "s|image: gozargah/marzban:.*|image: gozargah/marzban:${marzban_version}|g" "$docker_file_path"
+        sed -i "s|image: amirpronk3/marzban:.*|image: amirpronk3/marzban:${marzban_version}|g" "$docker_file_path"
     fi
     echo "Installing $marzban_version version"
     colorized_echo green "File saved in $APP_DIR/docker-compose.yml"
@@ -221,7 +221,7 @@ marzban_cli() {
 
 
 update_marzban_script() {
-    FETCH_REPO="Gozargah/Marzban-scripts"
+    FETCH_REPO="amirpronk3/Marzban-scripts"
     SCRIPT_URL="https://github.com/$FETCH_REPO/raw/master/marzban.sh"
     colorized_echo blue "Updating marzban script"
     curl -sSL $SCRIPT_URL | install -m 755 /dev/stdin /usr/local/bin/marzban
@@ -274,7 +274,7 @@ install_command() {
     # Function to check if a version exists in the GitHub releases
     check_version_exists() {
         local version=$1
-        repo_url="https://api.github.com/repos/Gozargah/Marzban/releases"
+        repo_url="https://api.github.com/repos/amirpronk3/Marzban/releases"
         if [ "$version" == "latest" ] || [ "$version" == "dev" ]; then
             return 0
         fi
