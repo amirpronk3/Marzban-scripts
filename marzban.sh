@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-INSTALL_DIR="/opt"
+INSTALL_DIR="/opt/"
 if [ -z "$APP_NAME" ]; then
-    APP_NAME="marzban"
+    APP_NAME="marzban2"
 fi
 APP_DIR="$INSTALL_DIR/$APP_NAME"
 DATA_DIR="/var/lib/$APP_NAME"
@@ -125,7 +125,7 @@ install_marzban_script() {
     FETCH_REPO="amirpronk3/Marzban-scripts"
     SCRIPT_URL="https://github.com/$FETCH_REPO/raw/master/marzban.sh"
     colorized_echo blue "Installing marzban script"
-    curl -sSL $SCRIPT_URL | install -m 755 /dev/stdin /usr/local/bin/marzban
+    curl -sSL $SCRIPT_URL | install -m 755 /dev/stdin /usr/local/bin/marzban2
     colorized_echo green "marzban script installed successfully"
 }
 
@@ -153,8 +153,8 @@ install_marzban() {
     curl -sL "$FILES_URL_PREFIX/.env.example" -o "$APP_DIR/.env"
     sed -i 's/^# \(XRAY_JSON = .*\)$/\1/' "$APP_DIR/.env"
     sed -i 's/^# \(SQLALCHEMY_DATABASE_URL = .*\)$/\1/' "$APP_DIR/.env"
-    sed -i 's~\(XRAY_JSON = \).*~\1"/var/lib/marzban/xray_config.json"~' "$APP_DIR/.env"
-    sed -i 's~\(SQLALCHEMY_DATABASE_URL = \).*~\1"sqlite:////var/lib/marzban/db.sqlite3"~' "$APP_DIR/.env"
+    sed -i 's~\(XRAY_JSON = \).*~\1"/var/lib/marzban2/xray_config.json"~' "$APP_DIR/.env"
+    sed -i 's~\(SQLALCHEMY_DATABASE_URL = \).*~\1"sqlite:////var/lib/marzban2/db.sqlite3"~' "$APP_DIR/.env"
     colorized_echo green "File saved in $APP_DIR/.env"
     
     colorized_echo blue "Fetching xray config file"
@@ -166,9 +166,9 @@ install_marzban() {
 
 
 uninstall_marzban_script() {
-    if [ -f "/usr/local/bin/marzban" ]; then
+    if [ -f "/usr/local/bin/marzban2" ]; then
         colorized_echo yellow "Removing marzban script"
-        rm "/usr/local/bin/marzban"
+        rm "/usr/local/bin/marzban2"
     fi
 }
 
@@ -224,7 +224,7 @@ update_marzban_script() {
     FETCH_REPO="amirpronk3/Marzban-scripts"
     SCRIPT_URL="https://github.com/$FETCH_REPO/raw/master/marzban.sh"
     colorized_echo blue "Updating marzban script"
-    curl -sSL $SCRIPT_URL | install -m 755 /dev/stdin /usr/local/bin/marzban
+    curl -sSL $SCRIPT_URL | install -m 755 /dev/stdin /usr/local/bin/marzban2
     colorized_echo green "marzban script updated successfully"
 }
 
