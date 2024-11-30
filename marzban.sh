@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-INSTALL_DIR="/opt/"
+INSTALL_DIR="/opt"
 if [ -z "$APP_NAME" ]; then
     APP_NAME="marzban2"
 fi
